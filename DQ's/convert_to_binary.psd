@@ -1,0 +1,32 @@
+'''
+Topic 1 DQ 2 Instructions and Questions
+Finding the Binary Representation of a Positive Decimal Integer:
+Problem Definition:
+•    The task is to convert a positive decimal integer A into its binary equivalent. 
+The binary representation of a number consists of only the digits 0 and 1.
+Pseudocode for the Algorithm:
+•    Write pseudocode for the binary conversion algorithm. The pseudocode should describe 
+how to divide the number by 2 and store the remainders to build the binary representation.
+
+Binary Representation: How can the binary representation of numbers be used in 
+various applications, such as computer science or digital systems? Could you 
+optimize the algorithm in any way for very large numbers?
+'''
+
+Function ConvertToBinary(A):
+    # Check if the number is zero
+    If A is 0:
+        Return "0"  # Binary representation of 0 is "0"
+
+    # Create an empty list to store binary digits
+    Create an empty list called binaryDigits
+
+    # Loop until the number becomes 0
+    While A > 0:
+        remainder = A % 2  # Get the remainder (either 0 or 1)
+        Insert remainder at the beginning of binaryDigits  # Build binary from right to left
+        A = A // 2  # Divide A by 2 using integer division to remove the last bit
+
+    # Combine all digits into a single binary string
+    Join all elements of binaryDigits into a string
+    Return the resulting binary string

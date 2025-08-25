@@ -1,0 +1,35 @@
+# Dynamic Programming Pseudocode
+def dp_knapsack(weights, values, capacity):
+    # Number of items
+    n = len(weights)
+
+    # Initialize a 2D array dp where dp[i][w] represents the maximum value 
+    # that can be attained with the first i items and a knapsack capacity of w
+    dp = [[0] * (capacity + 1) for _ in range(n + 1)]
+
+    # Counter to track the number of steps (for complexity analysis)
+    steps = 0 
+
+    # Iterate over each item
+    for i in range(1, n + 1):
+        # Iterate over every capacity from 0 to total capacity
+        for w in range(capacity + 1):
+            steps += 1  # Count each operation for complexity
+            
+            # If the current item's weight is less than or equal to the current capacity
+            if weights[i - 1] <= w:
+                # Take the maximum of either:
+                # 1. Not taking the item: dp[i - 1][w]
+                # 2. Taking the item: value of the item + dp value for the remaining capacity
+                dp[i][w] = max(
+                    dp[i - 1][w], 
+                    dp[i - 1][w - weights[i - 1]] + values[i - 1]
+                )
+            else:
+                # If the item's weight exceeds the current capacity, we can't take it
+                # So we inherit the value from the previous item at same capacity
+                dp[i][w] = dp[i - 1][w]
+
+    # Return the maximum value possible and the number of steps taken
+    return dp[n][capacity], steps
+

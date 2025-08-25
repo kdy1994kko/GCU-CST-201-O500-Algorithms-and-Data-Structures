@@ -1,0 +1,46 @@
+def find_cycles(graph):
+    n = len(graph)  # Number of nodes in the graph
+    min_weight = float('inf')  # To store the minimum cycle weight found
+    all_cycles = []  # To store all detected cycles along with their weights
+
+    # Recursive DFS function to explore all simple cycles
+    def dfs(start, node, visited_nodes, visited_edges, path, weight):
+        nonlocal min_weight, all_cycles
+
+        # If we're back at the starting node and the path is not empty, it's a cycle
+        if node == start and len(path) > 1:
+            all_cycles.append((list(path), weight))  # Save the path and its total weight
+            min_weight = min(min_weight, weight)  # Update the minimum weight
+            return
+
+        for neighbor in range(n):
+            edge = (node, neighbor)
+
+            # Proceed only if edge exists and hasn't been visited
+            if graph[node][neighbor] != float('inf') and edge not in visited_edges:
+
+                # Skip already visited nodes to avoid repeating a vertex (except for returning to start)
+                if neighbor in visited_nodes and neighbor != start:
+                    continue
+
+                # Mark edge and node as visited
+                visited_nodes.add(neighbor)
+                visited_edges.add(edge)
+                path.append(neighbor)
+
+                # Recursive call
+                dfs(start, neighbor, visited_nodes, visited_edges, path, weight + graph[node][neighbor])
+
+                # Backtrack to try other paths
+                path.pop()
+                visited_edges.remove(edge)
+                visited_nodes.remove(neighbor)
+
+    # Try to find all cycles starting and ending at each node
+    for i in range(n):
+        dfs(i, i, set([i]), set(), [i], 0)
+
+    # Filter and return only cycles with the minimum weight
+    min_cycles = [cycle for cycle in all_cycles if cycle[1] == min_weight]
+    return min_cycles, min_weight
+

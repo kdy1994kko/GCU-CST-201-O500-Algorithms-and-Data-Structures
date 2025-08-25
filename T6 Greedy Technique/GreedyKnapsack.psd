@@ -1,0 +1,28 @@
+# Greedy Algorithm Pseudocode
+def greedy_knapsack(weights, values, capacity):
+    # Combine weights and values into tuples with value-to-weight ratio for greedy selection
+    items = [(v / w, w, v) for w, v in zip(weights, values)]
+    
+    # Sort items by their value-to-weight ratio in descending order
+    items.sort(reverse=True)
+
+    total_value = 0  # To store the total value accumulated
+    steps = 0        # To count the number of steps (iterations)
+
+    # Iterate over the sorted list of items
+    for ratio, weight, value in items:
+        if capacity >= weight: 
+            # If the full item fits, add its full value and reduce capacity
+            capacity -= weight
+            total_value += value
+            steps += 1
+        else:
+            # If the full item doesn't fit, take the fractional part that fits
+            total_value += value * (capacity / weight)
+            steps += 1
+            break  # Once a fractional item is taken, the knapsack is full
+
+    return total_value, steps  # Return total value and number of steps taken
+
+
+

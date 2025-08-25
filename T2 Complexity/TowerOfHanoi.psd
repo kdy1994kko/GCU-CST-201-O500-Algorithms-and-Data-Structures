@@ -1,0 +1,25 @@
+# Pseudocode to calculate the number of moves made by ith largest disk
+
+# Function to calculate moves made by ith largest disk
+function calculate_moves(n, i):
+    # Validate inputs
+    if i < 1 or i > n:
+        return "Invalid input. i must be between 1 and n."
+
+    # The number of moves made by ith largest disk is 2^(n - i)
+    moves = 2 ** (n - i)
+    
+    return moves
+
+# Main function
+function main():
+    # Read n (total disks)
+    n = input("Enter total number of disks (n): ")
+
+    # Read i (disk number to analyze)
+    i = input("Enter which disk (i) to count moves for: ")
+
+    # Calculate and display result
+    result = calculate_moves(n, i)
+    print("Number of moves made by disk", i, ":", result)
+

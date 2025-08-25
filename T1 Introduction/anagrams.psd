@@ -1,0 +1,27 @@
+# Function to check if two words are anagrams
+function are_anagrams(word1, word2):
+    # Convert both words to lowercase for case-insensitive comparison
+    word1 = word1.lower()
+    word2 = word2.lower()
+    
+    # Step 1: Check lengths first for efficiency
+    if length(word1) != length(word2):
+        return False  # If lengths differ, cannot be anagrams
+    
+    # Step 2: Sort the characters of both words
+    sorted_word1 = sort(word1)
+    sorted_word2 = sort(word2)
+    
+    # Step 3: Compare the sorted versions
+    if sorted_word1 == sorted_word2:
+        return True   # Words are anagrams
+    else:
+        return False  # Words are not anagrams
+
+# Main program
+word1 = input("Enter first word: ")
+word2 = input("Enter second word: ")
+
+# Check and display result
+result = are_anagrams(word1, word2)
+print(result)

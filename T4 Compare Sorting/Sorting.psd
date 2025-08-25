@@ -1,0 +1,21 @@
+function main():
+    read integer n from user
+    repeat 100 times:
+        create array of size n with values 1 to n
+        shuffle array
+
+        for each sorting algorithm (selection, bubble, merge, quick):
+            make a copy of the shuffled array
+            sort using the algorithm
+            record number of comparisons and data exchanges
+
+        for improved sort:
+            make a copy of the shuffled array
+            sort using improved algorithm (e.g., Timsort or optimized merge)
+            record number of comparisons and data exchanges
+
+    for each algorithm:
+        calculate average comparisons and average data exchanges
+        print averages
+
+

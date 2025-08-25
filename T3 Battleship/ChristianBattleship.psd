@@ -1,0 +1,36 @@
+1. Initialize two 10x10 boards:
+    - player_board (ships placed by user)
+    - computer_board (ships placed randomly)
+
+2. Define ships:
+    - Destroyer: 2x2 square
+    - Submarine: 3 diagonal cells
+    - Cruiser: 3 horizontal 
+
+3. Function to place ships (validate no overlaps)
+
+4. Function: display introductory Christian message
+    - "Play fairly, persevere through misses, and respect your opponent."
+    - Bible Verse: Colossians 3:23 — "Whatever you do, work heartily, as for the Lord and not for men."
+
+5. Game Loop:
+    WHILE neither player has won:
+        - Player's Turn:
+            - Prompt player to input row, column
+            - Validate input (no repeat shots)
+            - IF hit:
+                - Mark hit, inform player with encouragement.
+                - Bible Verse: Galatians 6:9 — "Let us not grow weary of doing good..."
+                - Player shoots again.
+            - ELSE:
+                - Mark miss, encourage perseverance.
+                - Bible Verse: James 1:12 — "Blessed is the one who perseveres under trial..."
+
+        - Computer's Turn:
+            - Randomly select untargeted cell (pattern matching to avoid repeats)
+            - IF hit:
+                - Computer continues until miss.
+
+6. Victory:
+    - Display respectful victory/defeat message.
+    - Bible Verse: Philippians 4:13 — "I can do all things through Christ who strengthens me."

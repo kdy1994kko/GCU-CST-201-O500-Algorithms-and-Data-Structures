@@ -1,0 +1,28 @@
+Input: 
+  n: the total amount to make change for
+  D[1..m]: array of coin denominations in descending order (d1 > d2 > ... > dm)
+
+Output:
+  C[1..m]: array of counts of each coin used
+
+GreedyChange(n, D):
+  # Initialize an array C to store the count of each coin used
+  C ← array of size m initialized to 0
+
+  # Iterate over each denomination starting from the largest
+  for i from 1 to m:
+    # Use as many of the current denomination as possible
+    while n ≥ D[i]:
+      n ← n - D[i]        # Subtract the denomination from the remaining amount
+      C[i] ← C[i] + 1     # Increment the count of this denomination
+
+  # If there is still some amount left, change cannot be made exactly
+  if n ≠ 0:
+    print "Change cannot be made exactly with given denominations"
+  else:
+    return C              # Return the array with counts of each denomination used
+
+#--------------------------------------------------------------------------------------------
+
+
+

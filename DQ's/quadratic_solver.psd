@@ -1,0 +1,58 @@
+'''
+Topic 1 DQ 2 Instructions and Questions
+Write a pseudocode for the algorithm that finds the real 
+roots of the quadratic equation ax2+bx+c=0, given the 
+coefficients a, b, and c. You can assume the availability 
+of the square root function sqrt(x).
+
+Quadratic Equation Roots: Discuss why the discriminant plays 
+such an important role in determining the number and type of 
+real roots for a quadratic equation. How would your solution 
+change if you needed to handle complex roots?
+'''
+
+Algorithm FindRealRoots(a, b, c)
+    Input: real numbers a, b, c
+    Output: real roots of the quadratic equation ax² + bx + c = 0 (if any)
+
+    # Check if the equation is actually quadratic
+    if a == 0 then
+        # If a and b are both zero
+        if b == 0 then
+            # If c is also zero, the equation becomes 0 = 0 → infinite solutions
+            if c == 0 then
+                Output "Infinite solutions (all real numbers are roots)"
+            else
+                # If c ≠ 0, the equation becomes c = 0 → contradiction, no solution
+                Output "No solution"
+        else
+            # Linear equation bx + c = 0 → solve for x
+            root = -c / b
+            Output "One root: ", root
+    else
+        # It's a quadratic equation, compute the discriminant
+        discriminant = b * b - 4 * a * c
+        
+        # Case: two distinct real roots
+        if discriminant > 0 then
+            root1 = (-b + sqrt(discriminant)) / (2 * a)
+            root2 = (-b - sqrt(discriminant)) / (2 * a)
+            Output "Two real roots: ", root1, " and ", root2
+
+        # Case: one real root (double root)
+        else if discriminant == 0 then
+            root = -b / (2 * a)
+            Output "One real root: ", root
+
+        # Case: discriminant is negative → complex roots (not real)
+        else
+            Output "No real roots"
+
+
+
+function countOccurrences(arr, key):
+    first = findFirst(arr, key)
+    if first == -1:
+        return 0
+    last = findLast(arr, key)
+    return last - first + 1

@@ -1,0 +1,18 @@
+
+# Counts how many times 'key' appears in sorted array 'arr'
+function countOccurrences(arr, key):
+    
+    # Use binary search to find the first occurrence of key
+    first = findFirst(arr, key)
+    
+    # If key not found at all, return 0
+    if first == -1:
+        return 0
+    
+    # Use binary search to find the last occurrence of key
+    last = findLast(arr, key)
+    
+    # Total occurrences = last index - first index + 1
+    return last - first + 1
+
+
